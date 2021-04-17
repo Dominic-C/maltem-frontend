@@ -50,7 +50,7 @@ class App extends Component {
                 <Navbar currencyList={this.state.currencyList} baseHandler={this.updateBaseHandler} base={this.state.base} />
                 <Switch>
                     <Route path="/" exact component={() => <LandingLayout currencyData={this.state.currencyData} currencyRates={this.state.currencyRates} />} />
-                    <Route path="/:code" exact component={() => <DetailsLayout base={this.state.base} />} />
+                    <Route path="/:code" exact component={() => <DetailsLayout base={this.state.base} currencyData={this.state.currencyData} />} />
                 </Switch>
             </div>
         );
