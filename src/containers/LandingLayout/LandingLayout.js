@@ -1,19 +1,14 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Card from '../../components/Card/Card';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import classes from './LandingLayout.module.css';
 import { withRouter } from 'react-router-dom';
 
 
-class LandingLayout extends Component {
-
-    componentDidMount() {
-        console.log("component did mount layout");
-        console.log(this.props);
-    }
+class LandingLayout extends PureComponent {
 
     onClickHandler = (code) => {
-        this.props.history.push(this.props.history.location.pathname + code);
+        this.props.history.push(this.props.location.pathname + code);
     }
 
     render() {
@@ -27,7 +22,7 @@ class LandingLayout extends Component {
                     decimals={item.decimal_units}
                     symbol={getSymbolFromCurrency(item.currency_code)}
                     rate={this.props.currencyRates[item.currency_code]}
-                    clicked={this.onClickHandler.bind(this, item.currency_code)}
+                    clicked={() => this.onClickHandler.bind(this, item.currency_code)}
                 />
             })
         }

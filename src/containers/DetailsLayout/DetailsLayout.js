@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 
 class DetailsLayout extends Component {
     componentDidMount() {
@@ -12,4 +12,4 @@ class DetailsLayout extends Component {
     };
 }
 
-export default withRouter(DetailsLayout);
+export default DetailsLayout;
