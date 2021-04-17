@@ -4,7 +4,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const navbar = (props) => {
     const dropdownItems = props.currencyList.map((code) => {
-        return <NavDropdown.Item key={code}>{code}</NavDropdown.Item> // add onClick={props.setBaseCurrency}
+        return <NavDropdown.Item key={code} onClick={() => props.baseHandler(code)}>{code}</NavDropdown.Item> // add onClick={props.setBaseCurrency}
     })
 
     return (

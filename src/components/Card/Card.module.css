@@ -1,0 +1,18 @@
+.Card {
+    border: 2px solid black;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 15px;
+    width: 30%;
+    display: inline-block;
+    text-align: left;
+}
+
+.TopItems {
+    display: flex;
+    justify-content: space-between;
+}
+
+.TopItem {
+    display: inline;
+}
