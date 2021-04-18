@@ -51,6 +51,6 @@ Before running the front end, please set up and run the back end first. The back
 
 ### Building and Running The Front End
 
--   To install the necessary packages, run `npm install`
+-   After cloning the repository, run `npm install` from the root folder.
 -   To build the front end, run `npm run build` from the front end root folder.
 -   To run the build, ensure you have `serve` installed. If not, run `npm install -g serve`, then run `serve -s build`.

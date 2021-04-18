@@ -29,7 +29,7 @@ class DetailsLayout extends Component {
     }
 
     updateCurrencyDetailsHandler = () => {
-        axios.get('http://localhost:9000/currencies?type=fiat').then(response => this.setState({ currencyInfo: response.data[this.props.match.params.code] }))
+        axios.get('http://localhost:9000/currencies?type=fiat').then(response => this.setState({ currencyInfo: response.data.response.fiats[this.props.match.params.code] }))
     }
 
     // returns list of objects each containing date and exchange rate
@@ -47,10 +47,10 @@ class DetailsLayout extends Component {
         const exchangeRates = await axios.all(requestURLs).then(axios.spread((...responses) => {
             const ratesForNDays = responses.map(response => {
                 console.log(response.data, this.props.match.params.code);
-                if (response.data[this.props.match.params.code] === null) {
+                if (response.data.response.rates[this.props.match.params.code] === null) {
                     return NO_EXCHANGE_RATE_FOUND;
                 }
-                return response.data[this.props.match.params.code];
+                return response.data.response.rates[this.props.match.params.code];
             })
             return ratesForNDays;
         }))

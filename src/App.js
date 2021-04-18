@@ -37,9 +37,9 @@ class App extends Component {
             .then((res) => {
                 axios.get(`http://localhost:9000/latest?base=${this.state.base}`)
                     .then((response) => {
-                        this.setState({ currencyData: Object.keys(res.data).map((key => res.data[key])) });
-                        this.setState({ currencyList: Object.keys(res.data) });
-                        this.setState({ currencyRates: response.data });
+                        this.setState({ currencyData: Object.keys(res.data.response.fiats).map((key => res.data.response.fiats[key])) });
+                        this.setState({ currencyList: Object.keys(res.data.response.fiats) });
+                        this.setState({ currencyRates: response.data.response.rates });
                     })
                     .catch(error => console.log(error));
             })
