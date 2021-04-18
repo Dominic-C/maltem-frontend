@@ -4,18 +4,17 @@ import DetailsLayout from './containers/DetailsLayout/DetailsLayout';
 import Navbar from './components/Navbar/Navbar';
 import { Route, Switch } from "react-router-dom";
 import React, { Component } from 'react';
-import axios from "axios";
+import axios from 'axios';
 
 class App extends Component {
 
     state = {
         currencyList: [],
         currencyData: [],
-        currencyRates: "",
+        currencyRates: '',
         base: 'SGD'
     }
     componentDidMount() {
-        console.log("component did mount");
         this.updateCurrencyList();
     }
 
@@ -24,14 +23,13 @@ class App extends Component {
             this.updateCurrencyList();
         }
     }
-    //componentDidUpdate to check if base currency changed
+
     updateBaseHandler = (newBase) => {
-        console.log("state updated to: ", newBase);
         this.setState({ base: newBase });
     }
 
     updateCurrencyList = async () => {
-        axios.get("http://localhost:9000/currencies?type=fiat")
+        axios.get('http://localhost:9000/currencies?type=fiat')
             .then((res) => {
                 axios.get(`http://localhost:9000/latest?base=${this.state.base}`)
                     .then((response) => {
@@ -49,8 +47,8 @@ class App extends Component {
             <div>
                 <Navbar currencyList={this.state.currencyList} baseHandler={this.updateBaseHandler} base={this.state.base} />
                 <Switch>
-                    <Route path="/" exact component={() => <LandingLayout currencyData={this.state.currencyData} currencyRates={this.state.currencyRates} />} />
-                    <Route path="/:code" exact component={() => <DetailsLayout base={this.state.base} currencyData={this.state.currencyData} />} />
+                    <Route path='/' exact component={() => <LandingLayout currencyData={this.state.currencyData} currencyRates={this.state.currencyRates} />} />
+                    <Route path='/:code' exact component={() => <DetailsLayout base={this.state.base} currencyData={this.state.currencyData} />} />
                 </Switch>
             </div>
         );

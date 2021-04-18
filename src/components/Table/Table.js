@@ -1,8 +1,13 @@
+import { NO_EXCHANGE_RATE_FOUND } from '../../constants';
+
 const Table = (props) => {
-    const tableBody = this.props.tableData.map((data) => {
+    const tableBody = props.tableData.map((data) => {
         return <tr key={data.date}>
             <td>{data.date}</td>
-            <td>{data.exchangeRate} {data.symbol}</td>
+            {data.rate === NO_EXCHANGE_RATE_FOUND ?
+                <td>{data.rate}</td> :
+                <td>{data.rate} {props.symbol}</td>
+            }
         </tr>
     })
 
