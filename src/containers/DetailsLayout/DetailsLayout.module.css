@@ -1,0 +1,13 @@
+.DetailsContainer {
+    padding: 40px;
+}
+
+.DetailsContainer h4 {
+    font-weight: 500;
+    color: #630000;
+    margin-bottom: 0;
+}
+
+.DetailsContainer p {
+    color: #8a8a8a;
+}

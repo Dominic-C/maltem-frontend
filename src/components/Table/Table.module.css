@@ -1,0 +1,14 @@
+.Table {
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin-top: 40px;
+    font-weight: 500;
+    color: #630000;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 5px 40px;
+}

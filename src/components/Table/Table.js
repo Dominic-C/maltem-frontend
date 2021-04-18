@@ -1,3 +1,4 @@
+import classes from './Table.module.css';
 import { NO_EXCHANGE_RATE_FOUND } from '../../constants';
 
 const Table = (props) => {
@@ -12,7 +13,7 @@ const Table = (props) => {
     })
 
     return (
-        <table>
+        <table className={classes.Table}>
             <thead>
                 <tr>
                     <th>Date</th>

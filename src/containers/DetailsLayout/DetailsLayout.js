@@ -6,6 +6,7 @@ import axios from 'axios';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import moment from 'moment';
 import { TODAY, THREE_DAYS, SEVEN_DAYS, NO_EXCHANGE_RATE_FOUND } from '../../constants';
+import classes from './DetailsLayout.module.css';
 
 class DetailsLayout extends Component {
     state = {
@@ -94,8 +95,8 @@ class DetailsLayout extends Component {
             name = this.state.currencyInfo.currency_name;
         }
         return (
-            <div>
-                <h1>{code}</h1>
+            <div className={classes.DetailsContainer}>
+                <h4>{code}</h4>
                 <p>{name}</p>
                 <ButtonGroup clicked={this.onFrequencyClickedHandler} />
                 {
