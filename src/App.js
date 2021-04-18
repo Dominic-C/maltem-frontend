@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import { Route, Switch } from "react-router-dom";
 import React, { Component } from 'react';
 import axios from 'axios';
+import ls from 'local-storage';
 
 class App extends Component {
 
@@ -15,6 +16,7 @@ class App extends Component {
         base: 'SGD'
     }
     componentDidMount() {
+        this.setState({ base: ls.get('base') || 'SGD' });
         this.updateCurrencyList();
     }
 
@@ -25,6 +27,8 @@ class App extends Component {
     }
 
     updateBaseHandler = (newBase) => {
+        // persist to local storage
+        ls.set('base', newBase);
         this.setState({ base: newBase });
     }
 
