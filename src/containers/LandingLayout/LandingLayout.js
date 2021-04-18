@@ -27,7 +27,7 @@ class LandingLayout extends PureComponent {
             })
         }
         return (
-            <div className={classes.Center}>
+            <div className={classes.LandingLayout}>
                 {currencyDataList}
             </div>
         );

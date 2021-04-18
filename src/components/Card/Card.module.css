@@ -8,6 +8,16 @@
     text-align: left;
 }
 
+.Card p {
+    margin: 0;
+}
+
+.Card:hover {
+    box-shadow: 5px 5px 10px #b8b8b8;
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
 .TopItems {
     display: flex;
     justify-content: space-between;
@@ -15,4 +25,12 @@
 
 .TopItem {
     display: inline;
+}
+
+.Code {
+    color: #630000;
+}
+
+.Name {
+    color: #8a8a8a;
 }
