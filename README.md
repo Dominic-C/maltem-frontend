@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Maltem Full Stack Assignment - Front End
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the source code for the React front end.
 
-## Available Scripts
+## Structure
 
-In the project directory, you can run:
+-   In the `src` folder, you will find a `components` and `containers` folder.
+    -   The `components` folder contains single components such as each individual `Card` component, the `NavBar`, `Table` and `ButtonGroup` components.
+        The `NavBar` and `ButtonGroup` components are wrapper components for React-Bootstrap components.
+    -   The `containers` folder contains two main containers, namely `LandingLayout` and `DetailsLayout`. These two containers represent the UI for page 1 and 2 respectively in the assignment.
 
-### `npm start`
+*   components each have a css file (modules for non React-bootstrap components, regular css files for bootstrap components)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Design Choices
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### React Router
 
-### `npm test`
+To provide the multipage experience needed in page 1 and page 2, React Router was used in the `index.js` file.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The router is set up in a way where the `NavBar` component remains on the page no matter the endpoint. The router then switches between `LandingLayout` and `DetailsLayout` depending on the path and passing props to them from the `App.js` component.
 
-### `npm run build`
+### Landing Page (Page 1)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The landing page in the `LandingLayout` component contains a list of `Card` components. Each card component has an `onClick` listener which pushes a path to the router history. This way, the user can navigate to the details page by clicking on the respective card.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Details Page (Page 2)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The details page in the `DetailsLayout` component contains several key parts. One of which is `updateTableDataHandler`. This handler executes a helper method, `queryNDates` whenever `this.state.frequency` changes. This call updates the `this.state.tableData` state which gets passed into the `Table` component for displaying.
 
-### `npm run eject`
+Constants such as `TODAY`, `THREE_DAYS`, `SEVEN_DAYS` and `NO_EXCHANGE_RATE_FOUND` can be observed in this component. This is to minimize errors when these names are reused in different components such as the `ButtonGroup` and `Table` components.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Refreshing the `DetailsLayout` page
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In my original design, the `DetailsLayout` component did not query for the currency data - it was passed in by props instead. This was an attempt to save on API calls to the currencyScoopAPI via the NodeJS backend. However, refreshing the page caused the props to reset, rendering the page unable to load. Thus, an API call was made in the `ComponentDidMount()` method in the component.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### User Experience
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Hover effects were used to give users visual feedback that `Card` components were clickable. The base currency dropdown was also shortened and made scrollable so that the dropdown list would not be too long.
 
-## Learn More
+### Others
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-   A library was used to manage local storage where key value pairs are used. This stores the base currency under the key name of `base`. The base currency state is taken from this key pair value whenever the page is reloaded.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   As some components are just wrapper components for react-bootstrap components, these components require a regular css file to style components with existing class names given by the react-bootstrap library. For components which do not rely on react-bootstrap, css moduels are used for styling instead.
 
-### Code Splitting
+## Set Up
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Running The Back end
 
-### Analyzing the Bundle Size
+Before running the front end, please set up and run the back end first. The backend is accessible at https://github.com/Dominic-C/maltem-backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Building and Running The Front End
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   To install the necessary packages, run `npm install`
+-   To build the front end, run `npm run build` from the front end root folder.
+-   To run the build, ensure you have `serve` installed. If not, run `npm install -g serve`, then run `serve -s build`.

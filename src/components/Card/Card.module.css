@@ -16,6 +16,7 @@
     box-shadow: 5px 5px 10px #b8b8b8;
     transform: scale(1.05);
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .TopItems {

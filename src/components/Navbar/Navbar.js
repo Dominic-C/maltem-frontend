@@ -17,12 +17,12 @@ const navbar = (props) => {
                     <Nav.Link href="/">Currencies</Nav.Link>
                 </Nav>
                 <Nav className="ml-auto">
-                    <NavDropdown title={`Base: ${props.base}`} id="basic-nav-dropdown">
+                    <NavDropdown title={`Base: ${props.base}`} className="baseCurrency" id="basic-nav-dropdown">
                         {dropdownItems}
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
-        </Navbar>
+        </Navbar >
     )
 }
 

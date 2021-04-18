@@ -46,7 +46,6 @@ class DetailsLayout extends Component {
         const requestURLs = dates.map(date => axios.get(`http://localhost:9000/historical?date=${date}&base=${this.props.base}&symbols=${this.props.match.params.code}`));
         const exchangeRates = await axios.all(requestURLs).then(axios.spread((...responses) => {
             const ratesForNDays = responses.map(response => {
-                // TODO: add check if response data is empty, ie no historical exchange rate for that day
                 console.log(response.data, this.props.match.params.code);
                 if (response.data[this.props.match.params.code] === null) {
                     return NO_EXCHANGE_RATE_FOUND;
