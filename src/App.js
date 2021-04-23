@@ -32,6 +32,8 @@ class App extends Component {
         this.setState({ base: newBase });
     }
 
+    // TODO: use service to retrieve currencies
+    // could use promises.all will do things in parallel.
     updateCurrencyList = async () => {
         axios.get('http://localhost:9000/currencies?type=fiat')
             .then((res) => {

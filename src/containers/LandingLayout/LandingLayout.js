@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 
 class LandingLayout extends PureComponent {
 
+    // TODO: some mapping to standardize name coding convention.
     onClickHandler = (code) => {
         this.props.history.push(this.props.location.pathname + code);
     }

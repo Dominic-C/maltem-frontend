@@ -1,6 +1,9 @@
 import classes from './Card.module.css';
 
 const Card = (props) => {
+    // destructuring and different props.
+    // define generic card // name and title
+    // define another component currency card // currency and symbol
     let rate = null;
     if (props.rate && props.decimals) {
         rate = props.rate.toFixed(props.decimals);

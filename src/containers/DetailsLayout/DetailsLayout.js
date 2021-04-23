@@ -29,6 +29,8 @@ class DetailsLayout extends Component {
     }
 
     updateCurrencyDetailsHandler = () => {
+        // TODO: use a constant
+        // better to have a service, eg apiservice.fetchCurrencies() instead of putting url directly inside code
         axios.get('http://localhost:9000/currencies?type=fiat').then(response => this.setState({ currencyInfo: response.data.response.fiats[this.props.match.params.code] }))
     }
 
@@ -66,6 +68,7 @@ class DetailsLayout extends Component {
         return tableData;
     }
 
+    // TODO: could be written with reducer. useReducer
     updateTableDataHandler = () => {
         // base from props, symbol from state
         switch (this.state.frequency) {
@@ -84,7 +87,7 @@ class DetailsLayout extends Component {
     }
 
     onFrequencyClickedHandler = (event) => {
-        this.setState({ frequency: event.target.name });
+        this.setState({ frequency: event.target.name }); // can just pass in a string
     }
 
     render() {
